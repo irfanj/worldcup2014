@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="worldcup">
+	<head>
+		<title>import.io at the World Cup 2014</title>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="container">
+			<h1>import.io at the World Cup 2014</h1>
+
+			<h2>Head to Head</h2>
+
+			<div class="headtohead" ng-controller="headtohead">
+				<div ng-hide="teamsLoaded">
+					<i class="fa fa-spin fa-circle-o-notch"></i>
+					<p>Loading teams...</p>
+				</div>
+				<div ng-show="teamsLoaded" ng-repeat="which in ['first', 'second']">
+					<select ng-model="teams[which]" ng-options="country for (country, link) in teams"></select>
+					<div class="players">
+						<div class="player" ng-repeat="player in teamData[which].players">
+							{{player.player}} number {{player.number}} position {{player.position}}
+						</div>
+					</div>
+					<div class="scorers">
+						<div class="scorer" ng-repeat="scorer in teamData[which].scorers">
+							{{scorer.scorer}} scored {{scorer.goals}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+		<script src="https://cdn.import.io/js/2.0.0/importio.js"></script>
+		<script src="app.js"></script>
+		<script src="headtohead.js"></script>
+	</body>
+</html>
