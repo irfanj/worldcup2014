@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .lead-well h1 {
-	font-size: 96px;
+	font-size: 120px;
 	margin-top: 0;
 }
 
@@ -124,4 +124,31 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	border-radius: 9px;
 	border: 1px solid #999;
 	margin-right: 10px;
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.lead-well h1 {
+		font-size: 90px;
+	}
+}
+
+@media (max-width: 991px) {
+	.lead-well h1 {
+		font-size: 64px;
+	}
+
+	.results .col-md-3.right,
+	.results .col-md-3.left {
+		text-align: center;
+	}
+}
+
+@media (max-width: 767px) {
+	.lead-well {
+		text-align: center;
+	}
+	.lead-well img.ball {
+		display: none;
+	}
 }
