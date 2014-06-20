@@ -17,16 +17,22 @@
 					<p>Loading teams...</p>
 				</div>
 				<div ng-show="teamsLoaded" ng-repeat="which in ['first', 'second']">
-					<select ng-model="teams[which]" ng-options="country for (country, link) in teams"></select>
-					<div class="players">
-						<div class="player" ng-repeat="player in teamData[which].players">
-							{{player.player}} number {{player.number}} position {{player.position}}
+					<select ng-model="teams[which]" ng-options="key for (key, value) in availableTeams"></select>
+					<div ng-show="teamReady[which]">
+						<div class="players">
+							<div class="player" ng-repeat="player in teamData[which].players">
+								{{player.player}} number {{player.number}} position {{player.position}}
+							</div>
+						</div>
+						<div class="scorers">
+							<div class="scorer" ng-repeat="scorer in teamData[which].scorers">
+								{{scorer.scorer}} scored {{scorer.goals}}
+							</div>
 						</div>
 					</div>
-					<div class="scorers">
-						<div class="scorer" ng-repeat="scorer in teamData[which].scorers">
-							{{scorer.scorer}} scored {{scorer.goals}}
-						</div>
+					<div ng-hide="teamReady[which] || !teams[which]">
+						<i class="fa fa-spin fa-circle-o-notch"></i>
+						<p>Loading team data...</p>
 					</div>
 				</div>
 			</div>

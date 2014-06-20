@@ -2,16 +2,16 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 
 	$scope.teamsLoaded = false;
 
-	$scope.teams = {};
+	$scope.availableTeams = {};
 
 	$scope.teams = {
-		"first": "",
-		"second": ""
+		"first": false,
+		"second": false
 	}
 
 	$scope.teamReady = {
 		"first": false,
-		"second": true
+		"second": false
 	}
 
 	$scope.teamData = {
@@ -38,10 +38,10 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 			}
 		}, { "done": function(data) {
 			$scope.$apply(function() {
-				$scope.teams = {};
+				$scope.availableTeams = {};
 				$scope.teamsLoaded = true;
 				data.map(function(row) {
-					$scope.teams[row.data.country_name] = row.data.link;
+					$scope.availableTeams[row.data.country_name] = row.data.link;
 				});
 			});
 		} });
