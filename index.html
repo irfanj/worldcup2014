@@ -179,7 +179,6 @@
 				<div class="col-md-12">
 					<div class="well source-well">
 						<h1 class="center">Top Scorers</h1>
-						<p class="description"></p>
 
 						<div class="row topscorers" ng-controller="topscorers">
 							<div ng-hide="loaded" class="col-md-12 center">
@@ -269,14 +268,156 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-md-12">
+					<div class="well source-well">
+						<h1 class="center">Results</h1>
+
+						<div class="row" ng-controller="results">
+							<div ng-hide="loaded" class="col-md-12 center">
+								<i class="fa fa-spin fa-circle-o-notch"></i>
+								<p>Loading match results...</p>
+							</div>
+							<div class="row" ng-if="loaded">
+								<div class="col-md-4 col-md-offset-2">
+									<h4>Most Prolific</h4>
+									<h2>{{countryRanking.prolific.name}}</h2>
+									<p>Most goals scored per game (<strong>{{countryRanking.prolific.goals}}</strong> goal{{countryRanking.prolific.goals == 1 ? '' : 's'}} in <strong>{{countryRanking.prolific.plays}}</strong> game{{countryRanking.prolific.games == 1 ? '' : 's'}})</p>
+								</div>
+								<div class="col-md-4">
+									<h4>Most Leaky</h4>
+									<h2>{{countryRanking.leaky.name}}</h2>
+									<p>Worst average goal diff (<strong>{{countryRanking.leaky.goals_conceded}}</strong> conceded and <strong>{{countryRanking.leaky.goals}}</strong> scored in <strong>{{countryRanking.leaky.plays}}</strong> game{{countryRanking.prolific.games == 1 ? '' : 's'}})</p>
+								</div>
+							</div>
+							<div class="row" ng-if="loaded">
+								<div class="col-md-12 center">
+									<h4>Biggest thrashing</h4>
+									<div class="row">
+										<div class="col-md-3 col-md-offset-2 right">
+											<h2>{{thrashing.home_team_text}}</h2>
+										</div>
+										<div class="col-md-2 center">
+											<h2><strong>{{thrashing.home_goals}}</strong> - <strong>{{thrashing.away_goals}}</strong></h2>
+										</div>
+										<div class="col-md-3 left">
+											<h2>{{thrashing.away_team_text}}</h2>
+										</div>
+									</div>
+									<p>Played {{date(thrashing.date)}}, {{thrashing.match_context}}</p>
+								</div>
+							</div>
+							<div ng-show="loaded" class="col-md-12">
+								<h2 class="center">Country records</h2>
+								<table class="table table-hover scorers">
+									<thead>
+										<tr>
+											<th>Country</th>
+											<th>Goals scored</th>
+											<th>Goals conceded</th>
+											<th>Goal diff</th>
+											<th>Games played</th>
+											<th>Wins</th>
+											<th>Draws</th>
+											<th>Losses</th>
+											<th>Goals/game</th>
+											<th>Goal diff/game</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="(team, stats) in countries">
+											<td>{{team}}</td>
+											<td>{{stats.goals}}</td>
+											<td>{{stats.goals_conceded}}</td>
+											<td>{{stats.goal_diff}}</td>
+											<td>{{stats.plays}}</td>
+											<td>{{stats.wins}}</td>
+											<td>{{stats.draws}}</td>
+											<td>{{stats.losses}}</td>
+											<td>{{stats.goals_per_game}}</td>
+											<td>{{stats.goal_diff_per_game}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div ng-show="loaded" class="col-md-8 col-md-offset-2">
+								<h2 class="center">All games so far</h2>
+								<table class="table table-hover scorers">
+									<thead>
+										<tr>
+											<th colspan="3"></th>
+											<th>Date</th>
+											<th>Competition phase</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="result in results">
+											<td class="center">{{result.home_team_text}}</td>
+											<td class="center"><strong>{{result.home_goals}}</strong> - <strong>{{result.away_goals}}</strong></td>
+											<td class="center">{{result.away_team_text}}</td>
+											<td>{{date(result.date)}}</td>
+											<td>{{result.match_context}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<h1 class="center">How it works</h1>
+						<div class="row">
+							<div class="resource col-md-4">
+								<h2>World Cup Results</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+							<div class="resource col-md-4">
+								<h2>Source</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-file-code-o"></i> AngularJS</li>
+									<li><i class="fa fa-github-alt"></i> Open Source</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://github.com/import-io/worldcup2014/blob/gh-pages/results.js" class="io" target="_blank">View source</a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
 		<script src="https://cdn.import.io/js/2.0.0/importio.js"></script>
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="moment.js"></script>
 		<script src="app.js"></script>
 		<script src="headtohead.js"></script>
 		<script src="topscorers.js"></script>
+		<script src="results.js"></script>
+
+		<!-- GA code -->
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-35197492-1', 'import.io');
+		ga('send', 'pageview');
+
+		</script>
 	</body>
 </html>

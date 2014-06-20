@@ -12,6 +12,14 @@ a.io:hover {
 	text-align: center;
 }
 
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
 .small {
 	font-size: 12px;
 }
