@@ -16,8 +16,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="well lead-well">
-						<img src="ball.png">
-						<h4>import.io at</h4>
+						<img src="ball.png" class="ball">
+						<h4><a href="https://import.io"><img class="logo" src="importio.png" alt="import.io"></a> at</h4>
 						<h1>World Cup 2014</h1>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="well advantage-well">
-						<h2>The <span class="io">import.io</span> advantage:</h2>
+						<h2>The <a href="https://import.io" target="_blank" class="io">import.io</a> advantage:</h2>
 						<p><img src="ball-icon.png" class="pull-left"> <strong>Real-time, all the time:</strong> your data updates when your source does, every time</p>
 						<p><img src="ball-icon.png" class="pull-left"> <strong>Your data, your way:</strong> get data from a single page; by interacting with search boxes; or by crawling entire websites</p>
 						<p><img src="ball-icon.png" class="pull-left"> <strong>Multiple sources:</strong> federate queries to up to 100 unique sources simultaneously</p>
@@ -207,7 +207,7 @@
 									</thead>
 									<tbody>
 										<tr ng-repeat="player in scorers">
-											<td>{{player.player}}</td>
+											<td><a href="{{player.picture}}" target="_blank"><img ng-src="{{player.picture}}" class="profile-sm"></a> {{player.player}}</td>
 											<td><img ng-src="{{player.flag}}" class="flag"></td>
 											<td>{{player.goals}}</td>
 											<td>{{player.assists}}</td>

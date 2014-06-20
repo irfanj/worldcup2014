@@ -3,7 +3,8 @@ body {
 	font-weight: 200;
 }
 
-.io {
+.io,
+a.io:hover {
 	color: #e92076;
 }
 
@@ -13,6 +14,10 @@ body {
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-weight: 200;
+}
+
+.logo {
+	height: 38px;
 }
 
 .container {
@@ -37,7 +42,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-bottom: 0;
 }
 
-.lead-well img {
+.lead-well img.ball {
 	float: left;
 	margin: -20px 20px 0 -20px;
 }
@@ -98,6 +103,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .topscorers img.profile {
 	width: 70px;
 	border-radius: 45px;
+	border: 1px solid #999;
+	margin-right: 10px;
+}
+
+.topscorers img.profile-sm {
+	width: 18px;
+	border-radius: 9px;
 	border: 1px solid #999;
 	margin-right: 10px;
 }
