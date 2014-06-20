@@ -2,37 +2,155 @@
 <html ng-app="worldcup">
 	<head>
 		<title>import.io at the World Cup 2014</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Ek+Mukta:200,600" rel="stylesheet">
+		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="worldcup.css" rel="stylesheet">
 	</head>
 	<body>
 
 		<div class="container">
-			<h1>import.io at the World Cup 2014</h1>
-
-			<h2>Head to Head</h2>
-
-			<div class="headtohead" ng-controller="headtohead">
-				<div ng-hide="teamsLoaded">
-					<i class="fa fa-spin fa-circle-o-notch"></i>
-					<p>Loading teams...</p>
-				</div>
-				<div ng-show="teamsLoaded" ng-repeat="which in ['first', 'second']">
-					<select ng-model="teams[which]" ng-options="key for (key, value) in availableTeams"></select>
-					<div ng-show="teamReady[which]">
-						<div class="players">
-							<div class="player" ng-repeat="player in teamData[which].players">
-								{{player.player}} number {{player.number}} position {{player.position}}
-							</div>
-						</div>
-						<div class="scorers">
-							<div class="scorer" ng-repeat="scorer in teamData[which].scorers">
-								{{scorer.scorer}} scored {{scorer.goals}}
-							</div>
-						</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="well lead-well">
+						<img src="ball.png">
+						<h4>import.io at</h4>
+						<h1>World Cup 2014</h1>
 					</div>
-					<div ng-hide="teamReady[which] || !teams[which]">
-						<i class="fa fa-spin fa-circle-o-notch"></i>
-						<p>Loading team data...</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="well advantage-well">
+						<h2>The <span class="io">import.io</span> advantage:</h2>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Real-time, all the time:</strong> your data updates when your source does, every time</p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Your data, your way:</strong> get data from a single page; by interacting with search boxes; or by crawling entire websites</p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Multiple sources:</strong> federate queries to up to 100 unique sources simultaneously</p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Engineered for scale:</strong> one query or one million, our scalable infrastructure won't even break a sweat</p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Here when you need us:</strong> issue or question? <a href="mailto:support@import.io" class="io">support@import.io</a> has you covered</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="well source-well">
+						<h1 class="center">Head to Head</h1>
+						<p class="description">Face off your favourite World Cup 2014 teams to see how they are faring in the competition</p>
+
+						<div class="row" ng-controller="headtohead">
+							<div ng-hide="teamsLoaded" class="col-md-12 center">
+								<i class="fa fa-spin fa-circle-o-notch"></i>
+								<p>Loading teams...</p>
+							</div>
+							<div ng-show="teamsLoaded" class="col-md-6" ng-repeat="which in ['first', 'second']">
+								<div class="center">
+									Select Team: <select ng-model="teams[which]" ng-options="key for (key, value) in availableTeams"></select>
+								</div>
+								<div ng-show="teamReady[which]">
+									<div class="goals center">
+										<span class="count">{{teamData[which].goals}}</span> goal{{teamData[which].goals == 1 ? '' : 's'}}
+									</div>
+									<h2 ng-if="teamData[which].scorers.length">Scorers</h2>
+									<table class="table table-hover scorers" ng-if="teamData[which].scorers.length">
+										<thead>
+											<tr>
+												<th>Player</th>
+												<th>Goals</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="scorer in teamData[which].scorers">
+												<td>{{scorer.scorer}}</td>
+												<td>{{scorer.goals}}</td>
+											</tr>
+										</tbody>
+									</table>
+									<h2>Squad</h2>
+									<table class="table table-hover players">
+										<thead ng-repeat-start="(position, players) in teamData[which].players">
+											<tr>
+												<th>{{position}}s ({{count(players)}})</th>
+												<th>Number</th>
+											</tr>
+										</thead>
+										<tbody ng-repeat-end>
+											<tr ng-repeat="(number, name) in players">
+												<td>{{name}}</td>
+												<td>{{number}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div ng-hide="teamReady[which] || !teams[which]" class="center">
+									<i class="fa fa-spin fa-circle-o-notch"></i>
+									<p>Loading team data...</p>
+								</div>
+							</div>
+						</div>
+
+						<h1 class="center">How it works</h1>
+						<div class="row">
+							<div class="resource col-md-4">
+								<h2>List of teams</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=ab0b0a83-c857-4314-912c-80ed9271b990" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=ab0b0a83-c857-4314-912c-80ed9271b990#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=ab0b0a83-c857-4314-912c-80ed9271b990" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+							<div class="resource col-md-4">
+								<h2>Goals and Scorers</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-code-fork"></i> Federation</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=3fc1d0f5-f147-4f70-83a1-c1807a753b5b" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=3fc1d0f5-f147-4f70-83a1-c1807a753b5b#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=3fc1d0f5-f147-4f70-83a1-c1807a753b5b" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+							<div class="resource col-md-4">
+								<h2>Squad</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-code-fork"></i> Federation</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=d16e8c80-ae43-496d-8375-4fd0ebf3e0dc" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=d16e8c80-ae43-496d-8375-4fd0ebf3e0dc#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=d16e8c80-ae43-496d-8375-4fd0ebf3e0dc" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="resource col-md-4">
+								<h2>Source</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-file-code-o"></i> AngularJS</li>
+									<li><i class="fa fa-github-alt"></i> Open Source</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://github.com/import-io/worldcup2014" class="io" target="_blank">View source</a></li>
+								</ul>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -41,6 +159,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
 		<script src="https://cdn.import.io/js/2.0.0/importio.js"></script>
+		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script src="app.js"></script>
 		<script src="headtohead.js"></script>
 	</body>

@@ -16,12 +16,14 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 
 	$scope.teamData = {
 		"first": {
-			"players": [],
-			"scorers": []
+			"players": {},
+			"scorers": [],
+			"goals": 0
 		},
 		"second": {
-			"players": [],
-			"scorers": []
+			"players": {},
+			"scorers": [],
+			"goals": 0
 		}
 	}
 
@@ -43,6 +45,8 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 				data.map(function(row) {
 					$scope.availableTeams[row.data.country_name] = row.data.link;
 				});
+				$scope.teams.first = "http://www.bbc.co.uk/sport/football/teams/england";
+				$scope.teams.second = "http://www.bbc.co.uk/sport/football/teams/usa";
 			});
 		} });
 	}
@@ -64,12 +68,19 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 			}
 		}, { "done": function(data) {
 			$scope.$apply(function() {
+				$scope.teamData[which].scorers = [];
+				$scope.teamData[which].players = {};
+				$scope.teamData[which].goals = 0;
 				data.map(function(row) {
-					var target = "scorers";
 					if (row.connectorGuid == "d16e8c80-ae43-496d-8375-4fd0ebf3e0dc") {
-						target = "players";
+						if (!$scope.teamData[which].players.hasOwnProperty(row.data.position)) {
+							$scope.teamData[which].players[row.data.position] = {};
+						}
+						$scope.teamData[which].players[row.data.position][row.data.number] = row.data.player;
+					} else {
+						$scope.teamData[which].scorers.push(row.data);
+						$scope.teamData[which].goals += row.data.goals;
 					}
-					$scope.teamData[which][target].push(row.data);
 				});
 				$scope.teamReady[which] = true;
 			});
@@ -81,5 +92,9 @@ angular.module("worldcup").controller("headtohead", function($scope, ioquery) {
 	$scope.$watch("teams.second", function() {
 		loadTeam($scope.teams.second, "second");
 	});
+
+	$scope.count = function(obj) {
+		return Object.keys(obj).length;
+	}
 
 });

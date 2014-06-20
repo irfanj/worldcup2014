@@ -1,0 +1,91 @@
+body {
+	font-family: 'Ek Mukta', sans-serif;
+	font-weight: 200;
+}
+
+.io {
+	color: #e92076;
+}
+
+.center {
+	text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-weight: 200;
+}
+
+.container {
+	margin-top: 30px;
+}
+
+.lead-well {
+	background: url(grass.jpg) no-repeat center center;
+	color: #333;
+	height: 220px;
+	overflow: hidden;
+}
+
+.lead-well h1 {
+	font-size: 96px;
+	margin-top: 0;
+}
+
+.lead-well h4 {
+	font-size: 32px;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.lead-well img {
+	float: left;
+	margin: -20px 20px 0 -20px;
+}
+
+/**
+ * Football icon: http://www.visualpharm.com/
+ */
+
+.advantage-well h2 {
+	margin-top: 0;
+}
+
+.advantage-well p {
+	font-size: 20px;
+}
+
+.advantage-well p img {
+	margin-right: 10px;
+}
+
+.source-well h1 {
+	margin-top: 0;
+	font-size: 48px;
+}
+
+.source-well .description {
+	font-size: 18px;
+}
+
+.source-well .fa.fa-spin {
+	font-size: 72px;
+	margin: 20px 0;
+}
+
+.source-well .goals .count {
+	font-size: 64px;
+	font-weight: 600;
+}
+
+.source-well .goals {
+	font-size: 28px;
+}
+
+.resource li {
+	font-size: 18px;
+}
+
+.resource ul.features li i.fa {
+	margin-right: 10px;
+	width: 18px;
+}
