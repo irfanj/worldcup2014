@@ -27,10 +27,10 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="well advantage-well">
 						<h2>The <a href="https://import.io" target="_blank" class="io">import.io</a> advantage:</h2>
-						<p><img src="ball-icon.png" class="pull-left"> <strong>Real-time, all the time:</strong> your data updates when your source does, every time</p>
-						<p><img src="ball-icon.png" class="pull-left"> <strong>Your data, your way:</strong> get data from a single page; by interacting with search boxes; or by crawling entire websites</p>
-						<p><img src="ball-icon.png" class="pull-left"> <strong>Multiple sources:</strong> federate queries to up to 100 unique sources simultaneously</p>
-						<p><img src="ball-icon.png" class="pull-left"> <strong>Engineered for scale:</strong> one query or one million, our scalable infrastructure won't even break a sweat</p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Real-time, all the time:</strong> your data updates when your source does, every time <span class="small">(<a href="https://import.io/pricing" target="_blank" class="io">more</a>)</span></p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Your data, your way:</strong> get data from a single page; by interacting with search boxes; or by crawling entire websites <span class="small">(<a href="https://import.io/features" target="_blank" class="io">more</a>)</span></p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Multiple sources:</strong> federate queries to up to 100 unique sources simultaneously <span class="small">(<a href="http://blog.import.io/post/query-up-to-100-sources-via-one-api-call-with-importio" target="_blank" class="io">more</a>)</span></p>
+						<p><img src="ball-icon.png" class="pull-left"> <strong>Engineered for scale:</strong> one query or one million, our scalable infrastructure won't even break a sweat <span class="small">(<a href="https://import.io/enterprise" target="_blank" class="io">more</a>)</span></p>
 						<p><img src="ball-icon.png" class="pull-left"> <strong>Here when you need us:</strong> issue or question? <a href="mailto:support@import.io" class="io">support@import.io</a> has you covered</p>
 					</div>
 				</div>
@@ -54,6 +54,7 @@
 								<div ng-show="teamReady[which]">
 									<div class="goals center">
 										<span class="count">{{teamData[which].goals}}</span> goal{{teamData[which].goals == 1 ? '' : 's'}}
+										<p class="small">(excluding own goals)</p>
 									</div>
 									<h2 ng-if="teamData[which].scorers.length">Scorers</h2>
 									<table class="table table-hover scorers" ng-if="teamData[which].scorers.length">
