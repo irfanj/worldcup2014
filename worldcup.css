@@ -89,3 +89,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-right: 10px;
 	width: 18px;
 }
+
+.topscorers img.flag,
+.scorers img.flag {
+	height: 18px;
+}
+
+.topscorers img.profile {
+	width: 70px;
+	border-radius: 45px;
+	border: 1px solid #999;
+	margin-right: 10px;
+}

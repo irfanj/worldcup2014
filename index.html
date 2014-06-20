@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-8 col-md-offset-2">
 					<div class="well advantage-well">
 						<h2>The <span class="io">import.io</span> advantage:</h2>
 						<p><img src="ball-icon.png" class="pull-left"> <strong>Real-time, all the time:</strong> your data updates when your source does, every time</p>
@@ -154,6 +154,101 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="well source-well">
+						<h1 class="center">Top Scorers</h1>
+						<p class="description"></p>
+
+						<div class="row topscorers" ng-controller="topscorers">
+							<div ng-hide="loaded" class="col-md-12 center">
+								<i class="fa fa-spin fa-circle-o-notch"></i>
+								<p>Loading top scorers...</p>
+							</div>
+							<div class="row" ng-if="loaded">
+								<div class="col-md-4 col-md-offset-2">
+									<h2>Most Prolific</h2>
+									<img ng-src="{{playerRanking.prolific.picture}}" class="pull-left profile">
+									<h3><img ng-src="{{playerRanking.prolific.flag}}" class="flag"> {{playerRanking.prolific.player}}</h3>
+									<p>Most goals scored (<strong>{{playerRanking.prolific.goals}}</strong>) in competition</p>
+								</div>
+								<div class="col-md-4">
+									<h2>Most Potent</h2>
+									<img ng-src="{{playerRanking.potent.picture}}" class="pull-left profile">
+									<h3><img ng-src="{{playerRanking.potent.flag}}" class="flag"> {{playerRanking.potent.player}}</h3>
+									<p>Most goals(<strong>{{playerRanking.potent.goals}}</strong>), shots on target (<strong>{{playerRanking.potent.shots_on_target}}</strong>) and assists (<strong>{{playerRanking.potent.assists}}</strong>) in competition</p>
+								</div>
+							</div>
+							<div class="row" ng-if="loaded">
+								<div class="col-md-4 col-md-offset-2">
+									<h2>Best value</h2>
+									<img ng-src="{{playerRanking.bestValue.picture}}" class="pull-left profile">
+									<h3><img ng-src="{{playerRanking.bestValue.flag}}" class="flag"> {{playerRanking.bestValue.player}}</h3>
+									<p>Fewest minutes played per goal scored (<strong>{{playerRanking.bestValue.mins_per_goal}}</strong> mins per goal) in competition</p>
+								</div>
+								<div class="col-md-4">
+									<h2>Worst value</h2>
+									<img ng-src="{{playerRanking.worstValue.picture}}" class="pull-left profile">
+									<h3><img ng-src="{{playerRanking.worstValue.flag}}" class="flag"> {{playerRanking.worstValue.player}}</h3>
+									<p>Most minutes played per goal scored (<strong>{{playerRanking.worstValue.mins_per_goal}}</strong> mins per goal) in competition (of players that scored)</p>
+								</div>
+							</div>
+							<div ng-show="loaded" class="col-md-8 col-md-offset-2">
+								<h2 class="center">Top Scorer Table</h2>
+								<table class="table table-hover scorers">
+									<thead>
+										<tr>
+											<th>Player</th>
+											<th>Nationality</th>
+											<th>Goals</th>
+											<th>Assists</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="player in scorers">
+											<td>{{player.player}}</td>
+											<td><img ng-src="{{player.flag}}" class="flag"></td>
+											<td>{{player.goals}}</td>
+											<td>{{player.assists}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<h1 class="center">How it works</h1>
+						<div class="row">
+							<div class="resource col-md-4">
+								<h2>World Cup Top Scorers</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=a5c35d9c-b2de-4159-a092-627f0861c0bb" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=a5c35d9c-b2de-4159-a092-627f0861c0bb#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=a5c35d9c-b2de-4159-a092-627f0861c0bb" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+							<div class="resource col-md-4">
+								<h2>Source</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-file-code-o"></i> AngularJS</li>
+									<li><i class="fa fa-github-alt"></i> Open Source</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://github.com/import-io/worldcup2014/blob/gh-pages/topscorers.js" class="io" target="_blank">View source</a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -162,5 +257,6 @@
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script src="app.js"></script>
 		<script src="headtohead.js"></script>
+		<script src="topscorers.js"></script>
 	</body>
 </html>
