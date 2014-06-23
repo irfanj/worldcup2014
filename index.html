@@ -28,6 +28,11 @@
 		<meta property="og:image:width" content="300">
 		<meta property="og:image:height" content="300">
 		<meta property="fb:app_id" content="512941028804389">
+
+		<script src="https://www.google.com/jsapi"></script>
+		<script>
+			google.load("visualization", "1", {"packages": ["geochart"]});
+		</script>
 	</head>
 	<body>
 
@@ -268,12 +273,53 @@
 				</div>
 			</div>
 
+		<div ng-controller="results">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="well map-well">
+						<h1 class="center">Goals of the Globe</h1>
+						<p class="description">Top goal counts on a global map</p>
+
+						<div id="goal-map"></div>
+
+						<h1 class="center">How it works</h1>
+						<div class="row">
+							<div class="resource col-md-4">
+								<h2>World Cup Results</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-table"></i> Extractor</li>
+									<li><i class="fa fa-clock-o"></i> Realtime</li>
+									<li><i class="fa fa-code"></i> Javascript</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://import.io/data/set/?mode=loadSource&amp;source=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3" class="io" target="_blank">View data</a></li>
+									<li><a href="https://import.io/data/integrate/?source=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3#js" class="io" target="_blank">Integrate source</a></li>
+									<li><a href="https://import.io/data/mine/?id=b2ebe9ab-a662-4b3e-be6e-f0d2dba33ba3" class="io" target="_blank">Source details</a></li>
+								</ul>
+							</div>
+							<div class="resource col-md-4">
+								<h2>Source</h2>
+								<ul class="list-unstyled features">
+									<li><i class="fa fa-code"></i> Javascript</li>
+									<li><i class="fa fa-file-code-o"></i> AngularJS</li>
+									<li><i class="fa fa-github-alt"></i> Open Source</li>
+								</ul>
+								<ul class="list-inline">
+									<li><a href="https://github.com/import-io/worldcup2014/blob/gh-pages/results.js" class="io" target="_blank">View source</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="well source-well">
 						<h1 class="center">Results</h1>
 
-						<div class="row results" ng-controller="results">
+						<div class="row results">
 							<div ng-hide="loaded" class="col-md-12 center">
 								<i class="fa fa-spin fa-circle-o-notch"></i>
 								<p>Loading match results...</p>
@@ -395,6 +441,7 @@
 				</div>
 			</div>
 
+		</div>
 
 		</div>
 

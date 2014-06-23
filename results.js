@@ -89,6 +89,26 @@ angular.module("worldcup").controller("results", function($scope, ioquery) {
 					}
 				}
 
+				var chartData = [["Country", "Goals"]];
+				for (var k in $scope.countries) {
+					chartData.push([k, $scope.countries[k].goals]);
+				}
+
+				var chartOptions = {
+					"width": "100%",
+					"colorAxis": {
+						"colors": [
+							"#fff",
+							"#e92076"
+						]
+					},
+					"datalessRegionColor": "#fff",
+					"legend": "none"
+				}
+
+				var chart = new google.visualization.GeoChart(document.getElementById("goal-map"));
+				chart.draw(google.visualization.arrayToDataTable(chartData), chartOptions);
+
 				$scope.loaded = true;
 			});
 		} });
