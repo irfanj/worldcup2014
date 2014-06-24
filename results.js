@@ -91,7 +91,7 @@ angular.module("worldcup").controller("results", function($scope, ioquery) {
 
 				var chartData = [["Country", "Goals"]];
 				for (var k in $scope.countries) {
-					chartData.push([k, $scope.countries[k].goals]);
+					chartData.push([k == "England" ? "United Kingdom" : k, $scope.countries[k].goals]);
 				}
 
 				var chartOptions = {
